@@ -4,6 +4,7 @@ import math
 pins = [4,17,27,22,10,9,11,5,6,13]
 GPIO.setmode(GPIO.BCM)
 pwm = []
+GPIO.setup(19,GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
 for i in pins:
     GPIO.setup(i,GPIO.OUT,initial=1)
     nPwm = GPIO.PWM(i,500)
