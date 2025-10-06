@@ -11,10 +11,11 @@ for i in pins:
     nPwm.start(0.0)
     pwm.append(nPwm)
 sign = 1
-def switchSign():
+def switchSign(pin):
+    print(sign)
     sign =  sign*-1
 try:
- GPIO.add_event_detect(channel = 19, edge= GPIO.RISING,callback=switchSign)
+ GPIO.add_event_detect(channel = 19, edge= GPIO.RISING,callback=switchSign,bouncetime= 100)
  while(1):
     for i,j in enumerate(pwm):
         j.ChangeDutyCycle(50+50*math.sin(2*3.14*.2*time.time()-sign*i*3.14/11))
