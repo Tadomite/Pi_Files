@@ -10,7 +10,8 @@ for i in pins:
     nPwm.start(0.0)
     pwm.append(nPwm)
 sign = 1
-switchSign = lambda : sign =  sign*-1
+def switchSign():
+    sign =  sign*-1
 try:
  GPIO.add_event_detect(channel = 19, edge= GPIO.RISING,callback=switchSign)
  while(1):
