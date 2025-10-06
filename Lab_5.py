@@ -9,10 +9,13 @@ for i in pins:
     nPwm = GPIO.PWM(i,500)
     nPwm.start(0.0)
     pwm.append(nPwm)
+sign = 1
+switchSign = lambda : sign =  sign*-1
 try:
+ GPIO.add_event_detect(edge= GPIO.RISING,callback=switchSign)
  while(1):
     for i,j in enumerate(pwm):
-        j.ChangeDutyCycle(50+50*math.sin(2*3.14*.2*time.time()+i*3.14/11))
+        j.ChangeDutyCycle(50+50*math.sin(2*3.14*.2*time.time()-sign*i*3.14/11))
 except:
  GPIO.cleanup()
     
