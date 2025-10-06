@@ -12,7 +12,7 @@ for i in pins:
 try:
  while(1):
     for i,j in enumerate(pwm):
-        j.ChangeDutyCycle(50+25*math.sin(2*3.14*.2*time.time()+i*3.14/11))
+        j.ChangeDutyCycle(50+50*math.sin(2*3.14*.2*time.time()+i*3.14/11))
 except:
  GPIO.cleanup()
     
