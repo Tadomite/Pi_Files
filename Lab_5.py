@@ -11,7 +11,9 @@ for i in pins:
     nPwm.start(0.0)
     pwm.append(nPwm)
 sign = 1
+
 def switchSign(pin):
+    global sign
     print(sign)
     sign =  sign*-1
 try:
