@@ -17,7 +17,6 @@ class Shifter:
     def shiftByte(self,pattern):
         print(pattern)
         self.pattern = pattern
-        self.ping()
         try:
           for i in range(8):
            GPIO.output(self.dataPin, self.pattern & (1<<i))
