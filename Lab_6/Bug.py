@@ -1,4 +1,4 @@
-import Bug
+from ..Shifter import Bug
 import RPi.GPIO as GPIO
 bug = Bug()
 GPIO.setmode(GPIO.BCM)
