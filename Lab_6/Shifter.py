@@ -53,8 +53,8 @@ class Bug:
                     self.x += random.choice([-1,1])
                 self.__shifter.shiftByte(1<<(self.x))
                 print(self.x)
-        except:
-            print("something has gone wrong")
+        except Exception as e:
+            print(e)
             GPIO.cleanup()
     def stop(self):
         self.__active = False
