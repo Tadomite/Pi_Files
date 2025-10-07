@@ -30,7 +30,7 @@ GPIO.add_event_detect(channel = s3, edge= GPIO.BOTH,callback=switchSpeed,bouncet
                 
 try:
      while(True):
-         pass
+         bug.update()
 except:
     GPIO.cleanup()   
         
