@@ -35,12 +35,12 @@ class Bug:
         #self.start()
     def start(self):
         self.__active = True
-        lastTime = time.time()
+        self.lastTime = time.time()
         
     def update(self):      
          if(self.__active):
-            if time.time()-lastTime > self.timeStep:
-                lastTime = time.time()
+            if time.time()-self.lastTime > self.timeStep:
+                self.lastTime = time.time()
                 if self.isWrapOn:
                  self.x += random.choice([-1,1])
                  self.x = (self.x+8)%8
