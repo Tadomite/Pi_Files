@@ -54,6 +54,7 @@ class Bug:
                 self.__shifter.shiftByte(1<<(self.x))
                 print(self.x)
         except:
+            print("something has gone wrong")
             GPIO.cleanup()
     def stop(self):
         self.__active = False
