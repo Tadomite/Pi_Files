@@ -39,6 +39,7 @@ class Bug:
         try:
          while(self.__active):
             if time.time()-lastTime > self.timeStep:
+                print(self.x)
                 if self.isWrapOn:
                  self.x += random.choice({-1,1})
                  self.x = (self.x+8)%8
