@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import time
+import random
 class Shifter:
     def __init__(self,dataPin, latchPin,clockPin):
         self.dataPin = dataPin
@@ -24,6 +25,28 @@ class Shifter:
     def shiftByte(self,pattern):
         self.pattern = pattern
         self.ping()
-
+    
+class Bug:
+    def __init__(self, timeStep = 0.1, x = 3, isWrapOn = False):
+        self.timeStep = timeStep
+        self.x = x
+        self.isWrapOn = isWrapOn
+        self.__shifter = Shifter(23,24,25)
+    def start(self):
+        self.__active = True
+        lastTime = time.time()
+        while(self.__active):
+            if time.time()-lastTime > self.timeStep:
+                if self.isWrapOn:
+                 self.x += random.choice({-1,1})
+                 self.x = (self.x+8)%8
+                elif self.x == 0:
+                    self.x +=1
+                elif self.x == 7:
+                    self.x -=1
+                self.__shifter.shiftByte(1<<(self.x))
+    def stop(self):
+        self.__active = False
+        self.__shifter.shiftByte(0)
    
     
