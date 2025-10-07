@@ -1,5 +1,6 @@
 from Shifter import Bug
 import RPi.GPIO as GPIO
+bug = Bug()
 def switchPin(pin):
     if GPIO.input(pin):
         bug.start()
@@ -20,8 +21,6 @@ GPIO.setup(s3,GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
 GPIO.add_event_detect(channel = s1, edge= GPIO.BOTH,callback=switchPin,bouncetime= 100)
 GPIO.add_event_detect(channel = s2, edge= GPIO.RISING,callback=switchWrap,bouncetime= 100)
 GPIO.add_event_detect(channel = s3, edge= GPIO.BOTH,callback=switchSpeed,bouncetime= 100)
-
-bug = Bug()
 
 
                 
