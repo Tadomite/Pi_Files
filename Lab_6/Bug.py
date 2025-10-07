@@ -3,20 +3,20 @@ import RPi.GPIO as GPIO
 bug = Bug()
 def switchPin(pin):
     state = GPIO.input(pin)
-    print("on/off: "+ state)
+    print("on/off: "+ str(state))
     if state:
         bug.start()
     else:
         bug.stop()
 def switchWrap(pin):
     bug.isWrapOn = not bug.isWrapOn
-    print("wrap: "+ bug.isWrapOn)
+    print("wrap: "+ str(bug.isWrapOn))
 def switchSpeed(pin):
     if GPIO.input(pin):
         bug.timeStep = bug.timeStep/3
     else:
         bug.timeStep = bug.timeStep*3
-    print("speed: "+ bug.timeStep )
+    print("speed: "+ str(bug.timeStep) )
 GPIO.setmode(GPIO.BCM)
 s1,s2,s3 = 4,17,27
 GPIO.setup(s1,GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
