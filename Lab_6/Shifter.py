@@ -43,14 +43,14 @@ class Bug:
             if time.time()-lastTime > self.timeStep:
                 lastTime = time.time()
                 if self.isWrapOn:
-                 self.x += random.choice({-1,1})
+                 self.x += random.choice([-1,1])
                  self.x = (self.x+8)%8
                 elif self.x == 0:
                     self.x +=1
                 elif self.x == 7:
                     self.x -=1
                 else:
-                    self.x += random.choice({-1,1})
+                    self.x += random.choice([-1,1])
                 self.__shifter.shiftByte(1<<(self.x))
                 print(self.x)
         except:
