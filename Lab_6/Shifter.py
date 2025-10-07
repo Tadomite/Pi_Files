@@ -15,7 +15,7 @@ class Shifter:
         time.sleep(0)
         GPIO.output(pin,0)
     def shiftByte(self,pattern):
-        print(pattern)
+        #print(pattern)
         self.pattern = pattern
         try:
           for i in range(8):
@@ -49,7 +49,7 @@ class Bug:
                 else:
                     self.x += random.choice([-1,1])
                 self.__shifter.shiftByte(1<<(self.x))
-                print(self.x)
+                #print(self.x)
         except Exception as e:
             print(e)
             GPIO.cleanup()
