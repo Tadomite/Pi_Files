@@ -36,7 +36,8 @@ class Bug:
     def start(self):
         self.__active = True
         lastTime = time.time()
-        while(self.__active):
+        try:
+         while(self.__active):
             if time.time()-lastTime > self.timeStep:
                 if self.isWrapOn:
                  self.x += random.choice({-1,1})
@@ -46,6 +47,8 @@ class Bug:
                 elif self.x == 7:
                     self.x -=1
                 self.__shifter.shiftByte(1<<(self.x))
+        except:
+            GPIO.cleanup()
     def stop(self):
         self.__active = False
         self.__shifter.shiftByte(0)
