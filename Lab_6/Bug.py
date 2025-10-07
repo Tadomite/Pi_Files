@@ -23,5 +23,9 @@ GPIO.add_event_detect(channel = s1, edge= GPIO.BOTH,callback=switchPin,bouncetim
 GPIO.add_event_detect(channel = s2, edge= GPIO.RISING,callback=switchWrap,bouncetime= 100)
 GPIO.add_event_detect(channel = s3, edge= GPIO.BOTH,callback=switchSpeed,bouncetime= 100)
                 
-    
+try:
+     while(True):
+         pass
+except:
+    GPIO.cleanup()   
         
