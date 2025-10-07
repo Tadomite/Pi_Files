@@ -10,12 +10,10 @@ class Shifter:
         GPIO.setup(dataPin, GPIO.OUT)
         GPIO.setup(latchPin, GPIO.OUT, initial=0)  # start latch & clock low
         GPIO.setup(clockPin, GPIO.OUT, initial=0)
-    def ping(pin):
+    def ping(self,pin):
         GPIO.output(pin,1) 	    # ping the clock pin to shift register data
         time.sleep(0)
         GPIO.output(pin,0)
-        
-      
     def shiftByte(self,pattern):
         print(pattern)
         self.pattern = pattern
