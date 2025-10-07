@@ -10,21 +10,23 @@ class Shifter:
         GPIO.setup(dataPin, GPIO.OUT)
         GPIO.setup(latchPin, GPIO.OUT, initial=0)  # start latch & clock low
         GPIO.setup(clockPin, GPIO.OUT, initial=0)
-    def ping(self):
-      try:
-        for i in range(8):
-         GPIO.output(self.dataPin, self.pattern & (1<<i))
-         GPIO.output(self.clockPin,1) 	    # ping the clock pin to shift register data
-         time.sleep(0)
-         GPIO.output(self.clockPin,0)
-        GPIO.output(self.latchPin, 1)        # ping the latch pin to send register to output
+    def ping(self,pin):
+        GPIO.output(pin,1) 	    # ping the clock pin to shift register data
         time.sleep(0)
-        GPIO.output(self.latchPin, 0)
-      except:
-        GPIO.cleanup()
+        GPIO.output(pin,0)
+        
+      
     def shiftByte(self,pattern):
+        print(pattern)
         self.pattern = pattern
         self.ping()
+        try:
+          for i in range(8):
+           GPIO.output(self.dataPin, self.pattern & (1<<i))
+           self.ping(self.clockPin)
+          self.ping(self.latchPin)
+        except:
+         GPIO.cleanup()
     
 class Bug:
     def __init__(self, timeStep = 0.1, x = 3, isWrapOn = False):
