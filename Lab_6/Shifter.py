@@ -31,6 +31,7 @@ class Bug:
         self.x = x
         self.isWrapOn = isWrapOn
         self.__shifter = Shifter(23,24,25)
+        self.__active = False
         #self.start()
     def start(self):
         self.__active = True
