@@ -4,9 +4,8 @@ ledBrightness = [0,0,0]
 GPIO.setmode(GPIO.BCM)
 pins = [4,17,27]
 pwm = []
-GPIO.setup(19,GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
 for i in pins:
-    GPIO.setup(i,GPIO.OUT,initial=1)
+    GPIO.setup(i,GPIO.OUT,initial=0)
     nPwm = GPIO.PWM(i,500)
     nPwm.start(0.0)
     pwm.append(nPwm)
@@ -44,8 +43,10 @@ def HandleWebPage():
         request =conn.recv(1024)
         data = parsePOSTdata(request)
         if len(data)>0:
-            ledBrightness[int(data['rG1'])] = int(data['slider'])
+            idx = int(data['rG1'])
+            ledBrightness[idx] = int(data['slider'])
             print(ledBrightness)
+            pwm[idx].ChangeDutyCycle(ledBrightness[idx])
         conn.send(b'HTTP/1.1 200 OK\nContent-type: text/html\nConnection: close\r\n\r\n')
         conn.sendall(bytes(GetWebpage(),'utf-8'))
         conn.close()
