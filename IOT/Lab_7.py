@@ -40,16 +40,19 @@ def HandleWebPage():
     s.listen(1)
     while(True):
         conn, (connAdd,connPort) = s.accept()
-        request =conn.recv(1024)
-        data = parsePOSTdata(request)
-        if len(data)>1:
-            idx = int(data['rG1'])
-            ledBrightness[idx] = int(data['slider'])
-            print(ledBrightness)
-            pwm[idx].ChangeDutyCycle(ledBrightness[idx])
-        conn.send(b'HTTP/1.1 200 OK\nContent-type: text/html\nConnection: close\r\n\r\n')
-        conn.sendall(bytes(GetWebpage(),'utf-8'))
-        conn.close()
+        try:
+            request =conn.recv(1024)
+            data = parsePOSTdata(request)
+            if len(data)>1:
+                idx = int(data['rG1'])
+                ledBrightness[idx] = int(data['slider'])
+                print(ledBrightness)
+                pwm[idx].ChangeDutyCycle(ledBrightness[idx])
+            conn.send(b'HTTP/1.1 200 OK\nContent-type: text/html\nConnection: close\r\n\r\n')
+            conn.sendall(bytes(GetWebpage(),'utf-8'))
+            conn.close()
+        except:
+            conn.close()
 try:
     HandleWebPage()
 except Exception as e:
