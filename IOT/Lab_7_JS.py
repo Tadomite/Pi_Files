@@ -37,23 +37,23 @@ def GetWebpage():
     </head>
     <h1 style="text-align: center; font-size: 40px; height:5vh;"><strong>Brightness Control</strong></h1>
     <div style="position:absolute; background-color: #99eeff; border: 2px solid #111; border-radius: 20px; display: table; height:90vh; width:90vw; right:2.5vw; box-shadow: 5px 5px 5px 5px #000000; text-align:center">
-        <form style="line-height: 20px; " action="/led" method="POST">
+        <form id="form1" style="line-height: 20px; " action="" method="POST">
     <div style="position:absolute; left:5vw; height:80vh; width:20vw; background-color: #eeeeee; border-radius: 50px; padding-top:5vh;">
     <span style="color: #ff0000; position: relative; height:10vh;">LED 1</span><br />
     <div style=" position:relative; height:65vh"></div>
-    <input style="position:absolute; top:35vh; height:10vh; width:60vh; margin-left:-30vh; left:10vw;" id="slider1" name="slider" type="range" value="""+f"{ledBrightness[0]}"+""" oninput="InputSlider(this,'l1')"/>
+    <input style="position:absolute; top:35vh; height:10vh; width:60vh; margin-left:-30vh; left:10vw;" id="slider1" name="slider" type="range" value="""+f"{ledBrightness[0]}"+""" oninput="InputSlider(this,'l1')" onchange="document.getElementById("form1").submit" />
       <br /><strong id="l1">0%</strong>
       </div>
     <div style="position:absolute; right:5vw; height:80vh; width:20vw; background-color: #eeeeee; border-radius: 50px;padding-top:5vh;">
     <span style="color: #0000ff; position: relative; height:10vh;">LED 3</span><br />
     <div  style=" position:relative; height:65vh"></div>
-    <input style="position:absolute; top:35vh; height:10vh; width:60vh; margin-right:-30vh; right:10vw;" id="slider3" name="slider" type="range" value="""+f"{ledBrightness[2]}"+""" oninput="InputSlider(this,'l3')"/>
+    <input style="position:absolute; top:35vh; height:10vh; width:60vh; margin-right:-30vh; right:10vw;" id="slider3" name="slider" type="range" value="""+f"{ledBrightness[2]}"+""" oninput="InputSlider(this,'l3')" onchange="document.getElementById("form1").submit"/>
       <br /><strong id="l3">0%</strong>
     </div>
     <div style="position:absolute; right:35vw; height:80vh; width:20vw; background-color: #eeeeee; border-radius: 50px;padding-top:5vh;">
     <span style="color: #00ff00; position: relative; height:10vh;">LED 2</span><br />
     <div style=" position:relative; height:65vh"></div>
-    <input style="position:absolute; top:35vh; height:10vh; width:60vh; margin-right:-30vh; right:10vw;" id="slider2" name="slider" type="range" value="""+f"{ledBrightness[1]}"+""" oninput="InputSlider(this,'l2')"/>
+    <input style="position:absolute; top:35vh; height:10vh; width:60vh; margin-right:-30vh; right:10vw;" id="slider2" name="slider" type="range" value="""+f"{ledBrightness[1]}"+""" oninput="InputSlider(this,'l2')" onchange="document.getElementById("form1").submit"/>
       <br /><strong id="l2">0%</strong>
     </div>
     </form>
