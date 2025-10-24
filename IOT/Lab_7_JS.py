@@ -37,7 +37,7 @@ def GetWebpage():
     </head>
     <h1 style="text-align: center; font-size: 40px; height:5vh;"><strong>Brightness Control</strong></h1>
     <div style="position:absolute; background-color: #99eeff; border: 2px solid #111; border-radius: 20px; display: table; height:90vh; width:90vw; right:2.5vw; box-shadow: 5px 5px 5px 5px #000000; text-align:center">
-        <form id="form1" style="line-height: 20px; " action="/led" method="POST">
+        <form id="form1" style="line-height: 20px; " action="" method="POST">
     <div style="position:absolute; left:5vw; height:80vh; width:20vw; background-color: #eeeeee; border-radius: 50px; padding-top:5vh;">
     <span style="color: #ff0000; position: relative; height:10vh;">LED 1</span><br />
     <div style=" position:relative; height:65vh"></div>
@@ -91,6 +91,7 @@ def HandleWebPage():
         try:
             request =conn.recv(1024)
             data = parsePOSTdata(request)
+            print(request)
             if len(data)>1:
                 idx = int(data['rG1'])
                 ledBrightness[idx] = int(data['slider'])
