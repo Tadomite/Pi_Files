@@ -93,6 +93,7 @@ def HandleWebPage():
         print([conn,connAdd,connPort])
         try:
             request =conn.recv(1024)
+            print(request)
             data = parsePOSTdata(request)
             print(data)
             if len(data)>1:
