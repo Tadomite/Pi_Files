@@ -93,6 +93,7 @@ def HandleWebPage():
         try:
             request =conn.recv(1024)
             data = parsePOSTdata(request)
+            print(data)
             if len(data)>1:
                 ledBrightness = [int(data['slider1']),int(data['slider2']),int(data['slider3'])]
                 print(ledBrightness)
