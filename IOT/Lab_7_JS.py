@@ -41,19 +41,19 @@ def GetWebpage():
     <div style="position:absolute; left:5vw; height:80vh; width:20vw; background-color: #eeeeee; border-radius: 50px; padding-top:5vh;">
     <span style="color: #ff0000; position: relative; height:10vh;">LED 1</span><br />
     <div style=" position:relative; height:65vh"></div>
-    <input style="position:absolute; top:35vh; height:10vh; width:60vh; margin-left:-30vh; left:10vw;" id="slider1" name="slider" type="range" value="""+f"{ledBrightness[0]}"+""" oninput="InputSlider(this,'l1')" onchange="document.getElementById("form1").submit" />
+    <input style="position:absolute; top:35vh; height:10vh; width:60vh; margin-left:-30vh; left:10vw;" id="slider1" name="slider" type="range" value="""+f"{ledBrightness[0]}"+""" oninput="InputSlider(this,'l1')" onchange="SubmitForm()" />
       <br /><strong id="l1">0%</strong>
       </div>
     <div style="position:absolute; right:5vw; height:80vh; width:20vw; background-color: #eeeeee; border-radius: 50px;padding-top:5vh;">
     <span style="color: #0000ff; position: relative; height:10vh;">LED 3</span><br />
     <div  style=" position:relative; height:65vh"></div>
-    <input style="position:absolute; top:35vh; height:10vh; width:60vh; margin-right:-30vh; right:10vw;" id="slider3" name="slider" type="range" value="""+f"{ledBrightness[2]}"+""" oninput="InputSlider(this,'l3')" onchange="document.getElementById("form1").submit"/>
+    <input style="position:absolute; top:35vh; height:10vh; width:60vh; margin-right:-30vh; right:10vw;" id="slider3" name="slider" type="range" value="""+f"{ledBrightness[2]}"+""" oninput="InputSlider(this,'l3')" onchange="SubmitForm()"/>
       <br /><strong id="l3">0%</strong>
     </div>
     <div style="position:absolute; right:35vw; height:80vh; width:20vw; background-color: #eeeeee; border-radius: 50px;padding-top:5vh;">
     <span style="color: #00ff00; position: relative; height:10vh;">LED 2</span><br />
     <div style=" position:relative; height:65vh"></div>
-    <input style="position:absolute; top:35vh; height:10vh; width:60vh; margin-right:-30vh; right:10vw;" id="slider2" name="slider" type="range" value="""+f"{ledBrightness[1]}"+""" oninput="InputSlider(this,'l2')" onchange="document.getElementById("form1").submit"/>
+    <input style="position:absolute; top:35vh; height:10vh; width:60vh; margin-right:-30vh; right:10vw;" id="slider2" name="slider" type="range" value="""+f"{ledBrightness[1]}"+""" oninput="InputSlider(this,'l2')" onchange="SubmitForm()"/>
       <br /><strong id="l2">0%</strong>
     </div>
     </form>
@@ -64,6 +64,9 @@ def GetWebpage():
         function InputSlider(inp,s) {
     inp.style.setProperty('--rangeVal',inp.value+"%");
     document.getElementById(s).textContent =inp.value+"%"
+    }
+    function SubmitForm(){
+      document.getElementById("form1").submit;
     }
       </script>
     """
