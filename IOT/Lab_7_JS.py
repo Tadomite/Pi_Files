@@ -92,7 +92,7 @@ def HandleWebPage():
         conn, (connAdd,connPort) = s.accept()
         print([conn,connAdd,connPort])
         try:
-            request =conn.recv(1024)
+            request =conn.recv(10024)
             print(request)
             data = parsePOSTdata(request)
             print(data)
