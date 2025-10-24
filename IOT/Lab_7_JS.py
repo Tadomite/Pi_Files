@@ -93,10 +93,10 @@ def HandleWebPage():
             data = parsePOSTdata(request)
             print(request)
             if len(data)>1:
-                idx = int(data['rG1'])
-                ledBrightness[idx] = int(data['slider'])
+                ledBrightness = [int(data['slider1']),int(data['slider2']),int(data['slider3'])]
                 print(ledBrightness)
-                pwm[idx].ChangeDutyCycle(ledBrightness[idx])
+                for idx,b in zip(pwm,ledBrightness):
+                  idx.ChangeDutyCycle(b)
             conn.send(b'HTTP/1.1 200 OK\nContent-type: text/html\nConnection: close\r\n\r\n')
             conn.sendall(bytes(GetWebpage(),'utf-8'))
             conn.close()
