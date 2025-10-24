@@ -87,7 +87,7 @@ def HandleWebPage():
     s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
     s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     s.bind(('',80))
-    s.listen(3)
+    s.listen(1)
     while(True):
         conn, (connAdd,connPort) = s.accept()
         print([conn,connAdd,connPort])
