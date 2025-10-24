@@ -83,6 +83,7 @@ def parsePOSTdata(data):
     return data_dict
 
 def HandleWebPage():
+    global ledBrightness
     s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
     s.bind(('',80))
     s.listen(1)
@@ -91,7 +92,6 @@ def HandleWebPage():
         try:
             request =conn.recv(1024)
             data = parsePOSTdata(request)
-            print(request)
             if len(data)>1:
                 ledBrightness = [int(data['slider1']),int(data['slider2']),int(data['slider3'])]
                 print(ledBrightness)
