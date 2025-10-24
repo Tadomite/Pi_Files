@@ -86,7 +86,7 @@ def HandleWebPage():
     global ledBrightness
     s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
     s.bind(('',80))
-    s.listen(1)
+    s.listen(3)
     while(True):
         conn, (connAdd,connPort) = s.accept()
         try:
@@ -99,7 +99,6 @@ def HandleWebPage():
                   idx.ChangeDutyCycle(b)
             conn.send(b'HTTP/1.1 200 OK\nContent-type: text/html\nConnection: close\r\n\r\n')
             conn.sendall(bytes(GetWebpage(),'utf-8'))
-            print(GetWebpage())
             conn.close()
         except Exception as e:
             print(e)
