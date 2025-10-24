@@ -89,6 +89,7 @@ def HandleWebPage():
     s.listen(3)
     while(True):
         conn, (connAdd,connPort) = s.accept()
+        print([conn,connAdd,connPort])
         try:
             request =conn.recv(1024)
             data = parsePOSTdata(request)
