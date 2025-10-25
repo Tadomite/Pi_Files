@@ -73,13 +73,13 @@ def GetWebpage():
     return webpage
 def parsePOSTdata(data):
     data_dict = {}
-    idx = data.find(b'\r\n\r\n')+4
+    idx = data.find('\r\n\r\n')+4
     data = data[idx:]
-    data_pairs = data.split(b'&')
+    data_pairs = data.split('&')
     for pair in data_pairs:
-        key_val = pair.split(b'=')
+        key_val = pair.split('=')
         if len(key_val) == 2:
-            data_dict[str(key_val[0],'utf-8')] = key_val[1]
+            data_dict[key_val[0]] = key_val[1]
     return data_dict
 
 def HandleWebPage():
@@ -92,7 +92,7 @@ def HandleWebPage():
         conn, (connAdd,connPort) = s.accept()
         print([conn,connAdd,connPort])
         try:
-            request =conn.recv(10024)
+            request =conn.recv(2048).decode('utf-8')
             print(request)
             data = parsePOSTdata(request)
             print(data)
