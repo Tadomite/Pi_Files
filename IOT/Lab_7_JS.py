@@ -67,7 +67,6 @@ def GetWebpage():
     }
     function SubmitForm(){
       document.getElementById("form1").submit();
-      document.getElementById("form1").submit();
     }
       </script>
     """
